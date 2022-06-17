@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Update.aspx.cs" Inherits="SchoolCrud.pages.Update" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Delete.aspx.cs" Inherits="SchoolCrud.pages.Delete" %>
+
 
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Update Student</title>
+    <title>Delete Existing Student</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -13,9 +14,9 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <div class="row p-5 alert alert-warning border border-warning mt-5">
+            <div class="row p-5 alert alert-danger border border-danger mt-5">
                 <div class="col-12 col-md-12 col-sm-12 col-lg-12 mb-3">
-                    <h4 class="bg-dark text-info p-3">Update Student</h4>
+                    <h4 class="bg-dark text-info p-3">Delete Existing Student</h4>
                 </div>
                 <div class="col-6 col-md-6col-sm-6 col-lg-6">
                     <asp:Label ID="LabelName" runat="server" Text="Name"></asp:Label><br />
@@ -31,7 +32,7 @@
                 </div>
                 <div class="col-6 col-md-6"></div>
                 <div class="col-12 col-md-12 col-sm-12 col-lg-12 mt-2 ">
-                    <asp:Button ID="update" runat="server" class="form-control btn btn-warning mb-3" Text="Update Student" OnClick="Submit_Click_Update" />
+                    <asp:Button ID="Delete" runat="server" class="form-control btn btn-danger mb-3" Text="Submit" OnClick="Submit_Click_Delete" />
                     <a class="btn btn-primary float-right" href="DisplayAll.aspx">Back to list</a>
                 </div>
             </div>

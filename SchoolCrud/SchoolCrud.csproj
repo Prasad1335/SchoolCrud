@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="pages\Add.aspx" />
+    <Content Include="pages\Delete.aspx" />
     <Content Include="pages\DisplayAll.aspx" />
     <Content Include="pages\Update.aspx" />
     <Content Include="Web.config" />
@@ -86,6 +87,13 @@
     </Compile>
     <Compile Include="pages\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Delete.aspx.cs">
+      <DependentUpon>Delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Delete.aspx.designer.cs">
+      <DependentUpon>Delete.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\DisplayAll.aspx.cs">
       <DependentUpon>DisplayAll.aspx</DependentUpon>

@@ -11,7 +11,7 @@ namespace SchoolCrud.pages
 {
 
 
-    public partial class Update
+    public partial class Delete
     {
 
         /// <summary>
@@ -78,12 +78,12 @@ namespace SchoolCrud.pages
         protected global::System.Web.UI.WebControls.TextBox TextBoxAddress;
 
         /// <summary>
-        /// update control.
+        /// Delete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button update;
+
     }
 }

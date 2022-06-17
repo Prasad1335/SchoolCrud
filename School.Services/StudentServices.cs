@@ -1,12 +1,8 @@
 ﻿using School.Services.Models;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace School.Services
 {
@@ -19,10 +15,12 @@ namespace School.Services
             var students = new List<Student>();
             using (var connection = new SqlConnection(connectionstring))
             {
-                string cmdText = "select * from Students";
-                SqlCommand command = new SqlCommand(cmdText, connection);  
+                string cmdText = "GetAllAndId";
+                SqlCommand command = new SqlCommand(cmdText, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
                 connection.Open();
-                var Reader= command.ExecuteReader();
+                var Reader = command.ExecuteReader();
 
                 while (Reader.Read())
                 {
@@ -36,7 +34,7 @@ namespace School.Services
                     students.Add(student);
                 }
             }
-                return students;
+            return students;
 
         }
 
@@ -59,9 +57,41 @@ namespace School.Services
             return students;
         }
 
-        public List<Student> Update(Student student)
+        public List<Student> GetById(int id)
         {
-            var students = new List<Student>();
+            var student = new List<Student>();
+            using (var connection = new SqlConnection(connectionstring))
+            {
+                string cmdText = "GetAllAndId";
+
+                var command = new SqlCommand(cmdText, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("Id", id);
+
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var std = new Student
+                        {
+                            Id = (int)reader["Id"],
+                            Name = (string)reader["Name"],
+                            RollNo = (int)reader["RollNo"],
+                            Address = (string)reader["Address"]
+                        };
+                        student.Add(std);
+                    }
+                }
+            }
+            return student;
+        }
+
+        public void Update(Student student)
+        {
+          
             using (var connection = new SqlConnection(connectionstring))
             {
                 string cmdText = "InsertUpdate";
@@ -75,7 +105,24 @@ namespace School.Services
                 connection.Open();
                 var Reader = command.ExecuteNonQuery();
             }
-            return students;
+        
+        }
+
+        public void Delete(int id)
+        {
+            using (var connection = new SqlConnection(connectionstring))
+            {
+                string cmdText = "DeleteId";
+                SqlCommand command  = new SqlCommand(cmdText, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@Id", id);
+
+                connection.Open();
+                var reader = command.ExecuteReader();   
+               
+            }
+
         }
     }
 }
